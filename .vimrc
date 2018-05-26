@@ -77,7 +77,7 @@ Plug 'honza/vim-snippets'
 "" Color
 "Plug 'tomasr/molokai'
 "" Plug 'nightsense/seagrey'
-Plug 'dikiaap/minimalist'
+Plug 'marciomazza/vim-brogrammer-theme'
 
 "*****************************************************************************
 "" Custom bundles
@@ -166,7 +166,7 @@ let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
   "colorscheme molokai
   "colorscheme seagrey-light
-  colorscheme minimalist
+  colorscheme brogrammer
 endif
 
 set mousemodel=popup
