@@ -76,7 +76,8 @@ Plug 'honza/vim-snippets'
 
 "" Color
 "Plug 'tomasr/molokai'
-"" Plug 'nightsense/seagrey'
+"Plug 'nightsense/seagrey'
+"Plug 'dikiaap/minimalist'
 Plug 'marciomazza/vim-brogrammer-theme'
 
 "*****************************************************************************
@@ -165,7 +166,6 @@ set number
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
   "colorscheme molokai
-  "colorscheme seagrey-light
   colorscheme brogrammer
 endif
 
@@ -188,7 +188,6 @@ else
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
-  
   if $COLORTERM == 'gnome-terminal'
     set term=gnome-256color
   else
@@ -196,14 +195,12 @@ else
       set term=xterm-256color
     endif
   endif
-  
-endif
 
+endif
 
 if &term =~ '256color'
   set t_ut=
 endif
-
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
