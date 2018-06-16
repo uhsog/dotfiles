@@ -75,11 +75,8 @@ endif
 Plug 'honza/vim-snippets'
 
 "" Color
-"Plug 'tomasr/molokai'
-"Plug 'nightsense/seagrey'
-"Plug 'dikiaap/minimalist'
-Plug 'marciomazza/vim-brogrammer-theme'
-"Plug 'jimeno0/vim-chito'
+"Plug 'marciomazza/vim-brogrammer-theme'
+Plug 'KeitaNakamura/neodark.vim'
 
 "*****************************************************************************
 "" Custom bundles
@@ -122,7 +119,7 @@ set ttyfast
 set backspace=indent,eol,start
 
 "" Tabs. May be overriten by autocmd rules
-set tabstop=4
+set tabstop=2
 set softtabstop=0
 set shiftwidth=4
 set expandtab
@@ -163,12 +160,10 @@ let g:session_command_aliases = 1
 syntax on
 set ruler
 set number
-
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  "colorscheme molokai
-  colorscheme brogrammer
-  "colorscheme chito
+  colorscheme neodark
+  "colorscheme brogrammer
 endif
 
 set mousemodel=popup
@@ -398,8 +393,8 @@ let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 " syntastic から rubocop を実行する設定
-" let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
-" let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
