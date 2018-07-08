@@ -148,6 +148,9 @@ else
     set shell=/bin/sh
 endif
 
+" ctags
+set tags=./tags;$HOME
+
 " session management
 let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
@@ -261,7 +264,8 @@ nnoremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
 " grep.vim
-nnoremap <silent> <leader>f :Rgrep<CR>
+" nnoremap <silent> <leader>f :Rgrep<CR>
+nnoremap <expr> gr :Rgrep<CR>
 let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
 let Grep_Skip_Dirs = '.git node_modules'
