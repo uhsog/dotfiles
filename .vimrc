@@ -78,6 +78,44 @@ Plug 'honza/vim-snippets'
 "Plug 'marciomazza/vim-brogrammer-theme'
 Plug 'KeitaNakamura/neodark.vim'
 
+" ファイルオープンを便利に
+Plug 'Shougo/unite.vim'
+" Unite.vimで最近使ったファイルを表示できるようにする
+Plug 'Shougo/neomru.vim'
+
+"*****************************************************************************
+"" Unit.vimの設定
+"*****************************************************************************
+" 入力モードで開始する
+let g:unite_enable_start_insert=1
+" バッファ一覧
+noremap <C-P> :Unite buffer<CR>
+" ファイル一覧
+noremap <C-N> :Unite -buffer-name=file file<CR>
+" 最近使ったファイルの一覧
+noremap <C-Z> :Unite file_mru<CR>
+" sourcesを「今開いているファイルのディレクトリ」とする
+noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+"*****************************************************************************
+
+" Gitを便利に使う
+Plug 'tpope/vim-fugitive'
+
+" grep検索の実行後にQuickFix Listを表示する
+autocmd QuickFixCmdPost *grep* cwindow
+
+" ステータス行に現在のgitブランチを表示する
+set statusline+=%{fugitive#statusline()}
+
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
@@ -88,9 +126,15 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-projectionist'
 Plug 'thoughtbot/vim-rspec'
 Plug 'ecomba/vim-ruby-refactoring'
-
-
+" Ruby向けにendを自動挿入してくれる
+Plug 'tpope/vim-endwise'
 "*****************************************************************************
+
+" コメントON/OFFを手軽に実行
+Plug 'tomtom/tcomment_vim'
+" シングルクオートとダブルクオートの入れ替え等
+Plug 'tpope/vim-surround'
+
 "*****************************************************************************
 
 "" Include user's extra bundle
@@ -121,7 +165,7 @@ set backspace=indent,eol,start
 "" Tabs. May be overriten by autocmd rules
 set tabstop=2
 set softtabstop=0
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 
 "" Map leader to ,
@@ -166,6 +210,7 @@ set number
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
   colorscheme neodark
+  let g:neodark#terminal_transparent = 1 " default: 0"
   "colorscheme brogrammer
 endif
 
@@ -508,7 +553,7 @@ vnoremap <leader>rem  :RExtractMethod<cr>
 "*****************************************************************************
 "*****************************************************************************
 
-"" Include user's local vim config
+"" Include local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
