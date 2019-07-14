@@ -3,7 +3,7 @@
 "" Specify a directory for plugins
 "" - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
-" Color
+" Color Schema
 Plug 'KeitaNakamura/neodark.vim'
 
 Plug 'bronson/vim-trailing-whitespace'
@@ -15,8 +15,12 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tomtom/tcomment_vim'
 
+" ', " 等の入れ替え
 Plug 'tpope/vim-surround'
+" (), [], {} 等の自動補完
+Plug 'cohama/lexima.vim'
 
+" for status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -24,13 +28,16 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
-" Ruby,Rails
+" Rails
 Plug 'tpope/vim-rails'
 "" Ruby向けにendを自動挿入してくれる
 Plug 'tpope/vim-endwise'
 
 " for Lint
 Plug 'w0rp/ale'
+
+" indent visualization
+Plug 'yggdroot/indentline'
 
 " Plug 'andrewradev/switch.vim'
 
@@ -87,7 +94,7 @@ set smartcase
 set wrapscan
 
 " ctags
-set tags=./tags;$HOME
+set tags=.tags;$HOME
 "" tagsジャンプの時に複数ある時は一覧で表示する
 nnoremap <C-]> g<C-]>
 
@@ -113,6 +120,7 @@ let mapleader = "\<Space>"
 
 " Key mappings
 noremap YY "+y<CR>
+noremap PP "+p<CR>
 "" Buffer nav
 noremap <leader>h :bp<CR>
 noremap <leader>l :bn<CR>
@@ -146,7 +154,6 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 " for ale
 let g:airline#extensions#ale#enabled = 1
-" let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 
 if !exists('g:airline_symbols')
