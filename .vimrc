@@ -63,6 +63,8 @@ set title
 set showmatch
 set titlestring=%F
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
+" allows moving the buffer without saving
+set hidden
 "" [WIP] linter
 let g:ale_fixers = {
 \  'ruby': ['rubocop'],
