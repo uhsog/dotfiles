@@ -39,6 +39,12 @@ Plug 'w0rp/ale'
 " indent visualization
 Plug 'yggdroot/indentline'
 
+" LSP (Langage Server Protcol)
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
 " Plug 'andrewradev/switch.vim'
 
 " Git
@@ -147,6 +153,24 @@ nnoremap <Leader>a :Ag<CR>
 if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
   set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+" lsp settings
+"" ale と競合するため off
+let g:lsp_diagnostics_enabled = 0
+"" debug for lsp
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
+" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
+if executable('solargraph')
+    " gem install solargraph
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'solargraph',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+        \ 'initialization_options': {"diagnostics": "true"},
+        \ 'whitelist': ['ruby'],
+        \ })
 endif
 
 " vim-airline
