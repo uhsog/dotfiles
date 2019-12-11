@@ -8,9 +8,6 @@ Plug 'KeitaNakamura/neodark.vim'
 
 Plug 'bronson/vim-trailing-whitespace'
 
-" A collection of language packs for Vim.
-Plug 'sheerun/vim-polyglot'
-
 " コメントON/OFFを手軽に実行
 Plug 'tpope/vim-commentary'
 Plug 'tomtom/tcomment_vim'
@@ -55,6 +52,10 @@ set statusline+=%{fugitive#statusline()}
 autocmd QuickFixCmdPost *grep* cwindow
 "" 変更した行を強調
 Plug 'airblade/vim-gitgutter'
+
+" A collection of language packs for Vim.
+"" 他pluginとの干渉を避けるためなるべく最後にする
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 "################################################
@@ -83,7 +84,10 @@ set updatetime=500 " Linterのチェックの反映を 0.5秒にする
 " let g:ale_fix_on_save = 1 " 保存時にauto correctを実行
 let g:ale_lint_on_enter = 1 " ファイルを開いたときにlint実行
 let g:ale_lint_on_save = 1 " ファイルを保存したときにlint実行
-" let g:ale_lint_on_text_changed = 'never' " 編集中のlintはしない
+let g:ale_lint_on_text_changed = 'never' " 編集中のlintはしない
+
+"" LSPと合わせると突然vimが落ちたり、挙動が怪しいのでRubyのsyntaxはLSP(solargraph)に任せる
+let g:polyglot_disabled = ['ruby']
 
 "" color scheme
 set t_Co=256
