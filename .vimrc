@@ -1,3 +1,7 @@
+" See `:h defaults.vim`
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
 " Plugins
 "" vim-plug : https://github.com/junegunn/vim-plug
 "" Specify a directory for plugins
@@ -164,8 +168,8 @@ endif
 let g:lsp_diagnostics_enabled = 0
 "" debug for lsp
 " let g:lsp_log_verbose = 1
-" let g:lsp_log_file = expand('~/vim-lsp.log')
-" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+" let g:lsp_log_file = expand('~/workspace/vim-lsp.log')
+" let g:asyncomplete_log_file = expand('~/workspace/asyncomplete.log')
 
 if executable('solargraph')
     " gem install solargraph
