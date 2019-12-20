@@ -46,6 +46,8 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 " Plug 'andrewradev/switch.vim'
 
 " Git
@@ -76,6 +78,11 @@ set titlestring=%F
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 " allows moving the buffer without saving
 set hidden
+" md as markdown, instead of modula2
+autocmd BufNewFile,BufRead *.{md} set filetype=markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal_code_blocks = 0
+
 "" [WIP] linter
 let g:ale_fixers = {
 \  'ruby': ['rubocop'],
