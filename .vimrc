@@ -46,8 +46,12 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
+" for Markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'kannokanno/previm'
+Plug 'mattn/vim-maketable'
+
 " Plug 'andrewradev/switch.vim'
 
 " Git
@@ -82,6 +86,8 @@ set hidden
 autocmd BufNewFile,BufRead *.{md} set filetype=markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal_code_blocks = 0
+" preview open with FireFox
+let g:previm_open_cmd = 'open -a Firefox'
 
 "" [WIP] linter
 let g:ale_fixers = {
