@@ -34,6 +34,10 @@ Plug 'tpope/vim-rails'
 "" Ruby向けにendを自動挿入してくれる
 Plug 'tpope/vim-endwise'
 
+" for Golang
+"" Golangを本格的に使うようになったらいれる
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
+
 " for Lint
 Plug 'w0rp/ale'
 
@@ -123,9 +127,9 @@ set smartcase
 set wrapscan
 
 " ctags
-set tags=.tags;$HOME
-"" tagsジャンプの時に複数ある時は一覧で表示する
-nnoremap <C-]> g<C-]>
+" set tags=.tags;$HOME
+" "" tagsジャンプの時に複数ある時は一覧で表示する
+" nnoremap <C-]> g<C-]>
 
 " Encoding
 set encoding=utf-8
@@ -193,6 +197,8 @@ if executable('solargraph')
         \ 'whitelist': ['ruby'],
         \ })
 endif
+" 定義元へのジャンプ
+nnoremap <C-]> :LspDefinition<CR>
 
 " vim-airline
 let g:airline_theme = 'night_owl'
