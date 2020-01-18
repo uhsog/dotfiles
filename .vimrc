@@ -39,7 +39,7 @@ Plug 'tpope/vim-endwise'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 
 " for Lint
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " indent visualization
 Plug 'yggdroot/indentline'
@@ -180,7 +180,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
-" lsp settings
+" LSP settings
 "" ale と競合するため off
 let g:lsp_diagnostics_enabled = 0
 "" debug for lsp
@@ -189,7 +189,7 @@ let g:lsp_diagnostics_enabled = 0
 " let g:asyncomplete_log_file = expand('~/workspace/asyncomplete.log')
 
 if executable('solargraph')
-    " gem install solargraph
+    " require solargraph gem
     au User lsp_setup call lsp#register_server({
         \ 'name': 'solargraph',
         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
