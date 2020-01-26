@@ -38,7 +38,7 @@ if has "brew"; then
 
   local installed=`brew list`
 
-  # desired_formulaeで指定していて、インストールされていないものをインストール
+  # install formulae
   for index in ${!desired_formulae[*]}
   do
     local formula=`echo ${desired_formulae[$index]} | cut -d' ' -f 1`
@@ -94,12 +94,12 @@ if has "brew"; then
   echo "$(tput setaf 2)Cleanup Homebrew complete. $(tput sgr0)"
 fi
 
-# 必要なファイル類を持ってくる
-# [ ! -d ${HOME}/antigen ] && git clone https://github.com/zsh-users/antigen.git ${HOME}/antigen
+# [wip] set prezto
+# https://github.com/sorin-ionescu/prezto
 
-# Brewで入れたプログラム言語管理コマンドの初期処理
+# setup rbenv on Homebrew
 if has "rbenv"; then
-  # 最新のRubyを入れる
+  # install latest Ruby version
   latest=`rbenv install --list | grep -v - | tail -n 1`
   current=`rbenv versions | tail -n 1 | cut -d' ' -f 2`
   if [ ${current} != ${latest} ]; then
