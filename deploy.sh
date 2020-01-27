@@ -4,6 +4,7 @@ for f in .??*
 do
     [[ "$f" == ".git" ]] && continue
     [[ "$f" == ".gitignore" ]] && continue
+    [[ "$f" == ".zpreztorc" ]] && continue
 
     ln -snfv ${f} ${HOME}/${f}
 done
