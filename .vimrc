@@ -67,6 +67,9 @@ autocmd QuickFixCmdPost *grep* cwindow
 "" 変更した行を強調
 Plug 'airblade/vim-gitgutter'
 
+" ファイルの自動保存(保存をフックに何かやる処理を入れてないので)
+Plug '907th/vim-auto-save'
+
 " A collection of language packs for Vim.
 "" 他pluginとの干渉を避けるためなるべく最後にする
 Plug 'sheerun/vim-polyglot'
@@ -109,6 +112,11 @@ let g:ale_lint_on_text_changed = 'never' " 編集中のlintはしない
 
 "" LSPと合わせると突然vimが落ちたり、挙動が怪しいのでRubyのsyntaxはLSP(solargraph)に任せる
 let g:polyglot_disabled = ['ruby']
+
+" vim-auto-save
+let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
 "" color scheme
 set t_Co=256
