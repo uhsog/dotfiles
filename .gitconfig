@@ -17,6 +17,7 @@
   co = checkout
   cm = commit -uno
   ft = fetch
+  sh = stash
   sw = switch
   swc = switch -c
 [pager]
