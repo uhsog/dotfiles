@@ -99,7 +99,7 @@ let g:vim_markdown_conceal_code_blocks = 0
 " preview open with FireFox
 let g:previm_open_cmd = 'open -a Firefox'
 
-"" [WIP] linter
+"" Linter
 let g:ale_fixers = {
 \  'ruby': ['rubocop'],
 \}
@@ -220,6 +220,9 @@ if executable('solargraph')
 endif
 " 定義元へのジャンプ
 nnoremap <C-]> :LspDefinition<CR>
+
+" My dictionary
+autocmd FileType ruby :set dictionary=~/workspace/dotfiles/dict/ruby_words.dict
 
 " vim-airline
 let g:airline_theme = 'night_owl'
