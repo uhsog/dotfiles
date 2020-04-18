@@ -58,6 +58,9 @@ Plug 'mattn/vim-maketable'
 
 " Plug 'andrewradev/switch.vim'
 
+" for Snippets
+Plug 'sirver/ultisnips'
+
 " Git
 Plug 'tpope/vim-fugitive'
 " ステータス行に現在のgitブランチを表示する
@@ -117,6 +120,16 @@ let g:polyglot_disabled = ['ruby']
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+
+" Snippets
+" Trigger configuration
+let g:UltiSnipsExpandTrigger='<c-j>'
+let g:UltiSnipsJumpForwardTrigger='<c-f>'
+let g:UltiSnipsJumpBackwardTrigger='<c-b>'
+" let g:UltiSnipsSnippetDirectories=["/dotfiles/ultisnips_snippets/rails.snippets"]
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit='vertical'
 
 "" color scheme
 set t_Co=256
