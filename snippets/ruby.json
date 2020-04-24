@@ -1,0 +1,41 @@
+{
+  "frozen string": {
+    "prefix": [ "frz" ],
+    "body": [
+      "# frozen_string_literal: true",
+      ""
+    ],
+    "description": "frozen magic comment"
+  },
+  "rspec it block": {
+    "prefix": [ "itdo" ],
+    "body": [
+      "it do",
+      "end"
+    ],
+    "description": "rspec it block"
+  },
+  "rspec it is_pected": {
+    "prefix": [ "itis" ],
+    "body": [
+      "it { is_expected.to }"
+    ],
+    "description": "rspec it { is_expected }"
+  },
+  "rspec context": {
+    "prefix": [ "cntx" ],
+    "body": [
+      "context \"\" do",
+      "end"
+    ],
+    "description": "rspec context block"
+  },
+  "rspec describe": {
+    "prefix": [ "desc" ],
+    "body": [
+      "describe \"\" do",
+      "end"
+    ],
+    "description": "rspec desctibe block"
+  }
+}
