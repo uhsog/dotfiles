@@ -151,11 +151,6 @@ set ignorecase
 set smartcase
 set wrapscan
 
-" ctags
-" set tags=.tags;$HOME
-" "" tagsジャンプの時に複数ある時は一覧で表示する
-" nnoremap <C-]> g<C-]>
-
 " Encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -210,8 +205,8 @@ endif
 let g:lsp_diagnostics_enabled = 0
 "" debug for lsp
 " let g:lsp_log_verbose = 1
-" let g:lsp_log_file = expand('~/workspace/vim-lsp.log')
-" let g:asyncomplete_log_file = expand('~/workspace/asyncomplete.log')
+" let g:lsp_log_file = expand('~/vim-lsp.log')
+" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
 if executable('solargraph')
     " require solargraph gem
@@ -224,6 +219,8 @@ if executable('solargraph')
 endif
 " 定義元へのジャンプ
 nnoremap <C-]> :LspDefinition<CR>
+nnoremap <C-h> :LspHover<CR>
+nnoremap <C-r> :LspReferences<CR>
 
 " My dictionary
 autocmd FileType ruby :set dictionary=~/workspace/dotfiles/dict/ruby_words.dict
