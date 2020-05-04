@@ -124,6 +124,11 @@ let g:polyglot_disabled = ['ruby']
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+" git commitの編集ではauto_saveをoffにする
+augroup ignore_ft_gitcommit
+  au!
+  au FileType gitcommit let b:auto_save = 0
+augroup END
 
 " Snippets
 """ vim-vsnip mapping.
