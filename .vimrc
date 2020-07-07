@@ -8,7 +8,7 @@ source $VIMRUNTIME/defaults.vim
 "" - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 " Color Schema
-Plug 'KeitaNakamura/neodark.vim'
+Plug 'sainnhe/edge'
 
 Plug 'bronson/vim-trailing-whitespace'
 
@@ -140,10 +140,15 @@ imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand)'         : '<C-j
 " imap <expr> <S-Tab> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 " smap <expr> <S-Tab> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
-"" color scheme
+" color scheme
 set t_Co=256
-colorscheme neodark
-let g:neodark#terminal_transparent = 1 " default: 0"
+set termguicolors
+"" for dark version
+set background=dark
+"" the configuration options should be placed before `colorscheme edge`
+let g:edge_style = 'aura'
+let g:edge_disable_italic_comment = 1
+colorscheme edge
 
 "" Directories for swp files
 set nobackup
