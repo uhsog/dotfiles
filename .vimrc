@@ -24,6 +24,8 @@ Plug 'cohama/lexima.vim'
 " for status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+"" for file type icon
+Plug 'ryanoasis/vim-devicons'
 
 " File Search by fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
