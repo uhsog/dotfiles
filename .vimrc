@@ -58,7 +58,6 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 " Plug 'honza/vim-snippets'
 
-
 " for Markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -135,12 +134,6 @@ augroup END
 " Snippets
 """ vim-vsnip mapping.
 imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-" imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-" smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-" imap <expr> <Tab>   vsnip#available(1)  ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-" smap <expr> <Tab>   vsnip#available(1)  ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-" imap <expr> <S-Tab> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-" smap <expr> <S-Tab> vsnip#available(-1) ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
 " color scheme
 set t_Co=256
@@ -205,8 +198,16 @@ let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/
 noremap <Leader>b :Buffers<CR>
 nnoremap <Leader>x :Commands<CR>
 nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>g :GFiles<CR>
+nnoremap <Leader>gf :GFiles<CR>
 nnoremap <Leader>a :Ag<CR>
+
+" fugitive
+nnoremap <leader>gs :tab sp<CR>:Gstatus<CR>:only<CR>
+nnoremap <leader>gg :Ggrep 
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gl :Git log<CR>
+nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <leader>gh :tab sp<CR>:0Gllog<CR>
 
 " The Silver Searcher
 if executable('ag')
