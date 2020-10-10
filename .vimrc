@@ -56,7 +56,6 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 "" integration to lsp
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
-" Plug 'honza/vim-snippets'
 
 " for Markdown
 Plug 'godlygeek/tabular'
@@ -236,9 +235,6 @@ endif
 nnoremap <C-]> :LspDefinition<CR>
 nnoremap <C-h> :LspHover<CR>
 nnoremap <C-r> :LspReferences<CR>
-
-" My dictionary
-autocmd FileType ruby :set dictionary=~/workspace/dotfiles/dict/ruby_words.dict
 
 " vim-airline
 let g:airline_theme = 'night_owl'

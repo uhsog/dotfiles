@@ -11,21 +11,29 @@
     "prefix": [ "itdo" ],
     "body": [
       "it do",
+      "  $0",
       "end"
     ],
     "description": "rspec it block"
   },
-  "rspec it is_pected": {
+  "rspec it is_expected {}": {
     "prefix": [ "itis" ],
     "body": [
-      "it { is_expected.to }"
+      "it { is_expected.to $0 }"
+    ],
+    "description": "rspec it { is_expected }"
+  },
+  "rspec is_expected {}": {
+    "prefix": [ "is_expected" ],
+    "body": [
+      "is_expected.to $0"
     ],
     "description": "rspec it { is_expected }"
   },
   "rspec context": {
     "prefix": [ "cntx" ],
     "body": [
-      "context \"\" do",
+      "context \'$0\' do",
       "end"
     ],
     "description": "rspec context block"
@@ -33,9 +41,26 @@
   "rspec describe": {
     "prefix": [ "desc" ],
     "body": [
-      "describe \"\" do",
+      "describe \'$0\' do",
       "end"
     ],
     "description": "rspec desctibe block"
+  },
+  "factory bot": {
+    "prefix": [ "factory_bot" ],
+    "body": [
+      "FactoryBot.define do",
+      "  factory :hoge do",
+      "  end",
+      "end"
+    ],
+    "description": "rspec desctibe block"
+  },
+  "binding.pry": {
+    "prefix": [ "bp" ],
+    "body": [
+      "binding.pry"
+    ],
+    "description": "binding pry"
   }
 }

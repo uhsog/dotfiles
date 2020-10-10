@@ -1,7 +1,0 @@
-frozen_string_literal
-RSpec
-describe
-context
-is_expected
-true
-false
