@@ -1,12 +1,12 @@
 [user]
-	name = uhsog
-	email = 30695524+uhsog@users.noreply.github.com
+  name = uhsog
+  email = 30695524+uhsog@users.noreply.github.com
 [core]
-	editor = vim -c \"set fenc=utf-8\"
+  editor = vim -c \"set fenc=utf-8\"
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+  diff = auto
+  status = auto
+  branch = auto
 [alias]
   s = status
   stt = status -uno     # Untracked filesを表示せず，not stagedと，stagedだけの状態を出力する
@@ -24,3 +24,7 @@
   # log = diff-highlight | less
   show = diff-highlight | less
   diff = diff-highlight | less
+[merge]
+  ff = false
+[pull]
+  ff = only

@@ -132,7 +132,7 @@ augroup END
 
 " Snippets
 """ vim-vsnip mapping.
-imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+imap <expr> <C-j> vsnip#available(1) ? '<Plug>(vsnip-expand)' : '<C-j>'
 
 " color scheme
 set t_Co=256
