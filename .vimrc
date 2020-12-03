@@ -24,8 +24,6 @@ Plug 'cohama/lexima.vim'
 " for status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"" for file type icon
-Plug 'ryanoasis/vim-devicons'
 
 " File Search by fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -77,6 +75,12 @@ Plug 'airblade/vim-gitgutter'
 " ファイルの自動保存(保存をフックに何かやる処理を入れてないので)
 Plug '907th/vim-auto-save'
 
+" File Viewer
+Plug 'lambdalisue/fern.vim'
+"" for file icons
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+
 " A collection of language packs for Vim.
 "" 他pluginとの干渉を避けるためなるべく最後にする
 Plug 'sheerun/vim-polyglot'
@@ -96,11 +100,18 @@ set titlestring=%F
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 " allows moving the buffer without saving
 set hidden
-" md as markdown, instead of modula2
-autocmd BufNewFile,BufRead *.{md} set filetype=markdown
+
+augroup vimrc
+  au!
+  " md as markdown, instead of modula2
+  au BufNewFile,BufRead *.{md} set filetype=markdown
+  au BufWritePost  ~/.vimrc  source ~/.vimrc
+augroup END
+
+" for Markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_conceal_code_blocks = 0
-" preview open with FireFox
+" preview open with FireFox (plugin previm)
 let g:previm_open_cmd = 'open -a Firefox'
 
 "" Linter
@@ -178,23 +189,33 @@ set expandtab
 let mapleader = "\<Space>"
 
 " Key mappings
-noremap YY "+y<CR>
-noremap PP "+p<CR>
+nnoremap YY "+y<CR>
+nnoremap PP "+p<CR>
 "" Buffer nav
-noremap <leader>h :bp<CR>
-noremap <leader>l :bn<CR>
+nnoremap <leader>h :bp<CR>
+nnoremap <leader>l :bn<CR>
 "" Close buffer
-noremap <leader>c :bd<CR>
+nnoremap <leader>c :bd<CR>
 "" Save file
-noremap <leader>w :w<CR>
+nnoremap <leader>w :w<CR>
 "" Clean search (highlight)
 nnoremap <leader><leader> :noh<CR>
+"" Toggle line number
+nnoremap <leader>n :set number!<CR>
+
+" Fern (for File Viewer)
+""" Project drawer
+nnoremap <C-d> :Fern . -drawer<CR>
+""" open current directory
+nnoremap <C-c> :Fern %:h -opener=vsplit<CR>
+"" for file icon
+let g:fern#renderer = "nerdfont"
 
 " fzf.vim
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
-noremap <Leader>b :Buffers<CR>
+nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>x :Commands<CR>
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>gf :GFiles<CR>
@@ -259,9 +280,9 @@ let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
 let g:airline#extensions#readonly#symbol   = '⊘'
 let g:airline#extensions#linecolumn#prefix = '¶'
 let g:airline#extensions#paste#symbol      = 'ρ'
-let g:airline_symbols.linenr    = '␊'
-let g:airline_symbols.branch    = '⎇'
-let g:airline_symbols.paste     = 'ρ'
-let g:airline_symbols.paste     = 'Þ'
-let g:airline_symbols.paste     = '∥'
+let g:airline_symbols.linenr     = '␊'
+let g:airline_symbols.branch     = '⎇'
+let g:airline_symbols.paste      = 'ρ'
+let g:airline_symbols.paste      = 'Þ'
+let g:airline_symbols.paste      = '∥'
 let g:airline_symbols.whitespace = '_'
