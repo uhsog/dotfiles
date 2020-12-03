@@ -7,6 +7,53 @@
     ],
     "description": "frozen magic comment"
   },
+  "binding.pry": {
+    "prefix": [ "bp" ],
+    "body": [
+      "binding.pry"
+    ],
+    "description": "binding pry"
+  },
+  "factory bot": {
+    "prefix": [ "factory_bot" ],
+    "body": [
+      "FactoryBot.define do",
+      "  factory :hoge do",
+      "  end",
+      "end"
+    ],
+    "description": "rspec desctibe block"
+  },
+  "rspec describe": {
+    "prefix": [ "desc" ],
+    "body": [
+      "describe \"$0\" do",
+      "end"
+    ],
+    "description": "rspec desctibe block"
+  },
+  "rspec context": {
+    "prefix": [ "cntx" ],
+    "body": [
+      "context \'$0\' do",
+      "end"
+    ],
+    "description": "rspec context block"
+  },
+  "rspec subject": {
+    "prefix": [ "subj" ],
+    "body": [
+      "subject { $0 }"
+    ],
+    "description": "rspec subject { ~ }"
+  },
+  "rspec it {}": {
+    "prefix": [ "it{}" ],
+    "body": [
+      "it { $0 }"
+    ],
+    "description": "it { ~ }"
+  },
   "rspec it block": {
     "prefix": [ "itdo" ],
     "body": [
@@ -15,6 +62,13 @@
       "end"
     ],
     "description": "rspec it block"
+  },
+  "rspec expect().to": {
+    "prefix": [ "expect()" ],
+    "body": [
+      "expect($0).to $1"
+    ],
+    "description": "expect().to"
   },
   "rspec it is_expected {}": {
     "prefix": [ "itis" ],
@@ -30,37 +84,18 @@
     ],
     "description": "rspec it { is_expected }"
   },
-  "rspec context": {
-    "prefix": [ "cntx" ],
+  "rspec change{}.by": {
+    "prefix": [ "change{}.by" ],
     "body": [
-      "context \'$0\' do",
-      "end"
+      "change { $0 }.by($1)"
     ],
-    "description": "rspec context block"
+    "description": "rspec change_by"
   },
-  "rspec describe": {
-    "prefix": [ "desc" ],
+  "rspec change{}.from_to": {
+    "prefix": [ "change{}.from_to" ],
     "body": [
-      "describe \'$0\' do",
-      "end"
+      "change { $0 }.from($1).to($2)"
     ],
-    "description": "rspec desctibe block"
-  },
-  "factory bot": {
-    "prefix": [ "factory_bot" ],
-    "body": [
-      "FactoryBot.define do",
-      "  factory :hoge do",
-      "  end",
-      "end"
-    ],
-    "description": "rspec desctibe block"
-  },
-  "binding.pry": {
-    "prefix": [ "bp" ],
-    "body": [
-      "binding.pry"
-    ],
-    "description": "binding pry"
+    "description": "rspec change_from_to"
   }
 }
