@@ -189,8 +189,8 @@ set expandtab
 let mapleader = "\<Space>"
 
 " Key mappings
-nnoremap YY "+y<CR>
-nnoremap PP "+p<CR>
+noremap YY "+y<CR>
+noremap PP "+p<CR>
 "" Buffer nav
 nnoremap <leader>h :bp<CR>
 nnoremap <leader>l :bn<CR>
