@@ -65,10 +65,6 @@ Plug 'mattn/vim-maketable'
 
 " Git
 Plug 'tpope/vim-fugitive'
-" ステータス行に現在のgitブランチを表示する
-set statusline+=%{fugitive#statusline()}
-" grep検索の実行後にQuickFix Listを表示する
-autocmd QuickFixCmdPost *grep* cwindow
 "" 変更した行を強調
 Plug 'airblade/vim-gitgutter'
 
@@ -80,6 +76,9 @@ Plug 'lambdalisue/fern.vim'
 "" for file icons
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+
+" open URL on browser
+Plug 'tyru/open-browser.vim'
 
 " A collection of language packs for Vim.
 "" 他pluginとの干渉を避けるためなるべく最後にする
@@ -135,7 +134,7 @@ let g:polyglot_disabled = ['ruby']
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
-" git commitの編集ではauto_saveをoffにする
+"" git commitの編集ではauto_saveをoffにする
 augroup ignore_ft_gitcommit
   au!
   au FileType gitcommit let b:auto_save = 0
@@ -221,7 +220,13 @@ nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>gf :GFiles<CR>
 nnoremap <Leader>a :Ag<CR>
 
-" fugitive
+" Git
+"" fugitive
+"" ステータス行に現在のgitブランチを表示する
+set statusline+=%{fugitive#statusline()}
+" grep検索の実行後にQuickFix Listを表示する
+autocmd QuickFixCmdPost *grep* cwindow
+
 nnoremap <leader>gs :tab sp<CR>:Gstatus<CR>:only<CR>
 nnoremap <leader>gg :Ggrep 
 nnoremap <leader>gb :Gblame<CR>
@@ -257,6 +262,11 @@ nnoremap <C-]> :LspDefinition<CR>
 nnoremap <C-h> :LspHover<CR>
 nnoremap <C-r> :LspReferences<CR>
 
+" open-browser
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+
 " vim-airline
 let g:airline_theme = 'night_owl'
 let g:airline_powerline_fonts = 1
@@ -276,7 +286,7 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
+let g:airline#extensions#branch#prefix     = '➔' ", ➥ 
 let g:airline#extensions#readonly#symbol   = '⊘'
 let g:airline#extensions#linecolumn#prefix = '¶'
 let g:airline#extensions#paste#symbol      = 'ρ'
