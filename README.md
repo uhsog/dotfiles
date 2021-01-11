@@ -18,7 +18,3 @@ $ ~/dotfiles bash init_mac.sh
 ```bash
 $ ~/dotfiles bash deploy.sh
 ```
-
-# others
-Set up for Zsh
-https://github.com/sorin-ionescu/prezto
