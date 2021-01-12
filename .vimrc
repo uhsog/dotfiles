@@ -204,7 +204,7 @@ nnoremap <leader>n :set number!<CR>
 
 " Fern (for File Viewer)
 """ Project drawer
-nnoremap <C-d> :Fern . -drawer -togle<CR>
+nnoremap <C-d> :Fern . -drawer -toggle<CR>
 """ open current directory
 nnoremap <C-c> :Fern %:h -opener=vsplit<CR>
 "" for file icon
