@@ -232,7 +232,13 @@ nnoremap <leader>gg :Ggrep
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gl :Git log<CR>
 nnoremap <leader>gd :Gvdiff<CR>
-nnoremap <leader>gh :tab sp<CR>:0Gllog<CR>
+nnoremap <leader>gp :Git push<CR>
+
+" Use gh(github CLI) command
+nnoremap <leader>ghpr :!gh pr create --fill --web<CR>
+nnoremap <leader>ghck :!gh pr checkout <pr-number>
+nnoremap <leader>ghs :!gh pr status<CR>
+nnoremap <leader>ghl :!gh pr list --assignee <user-id>
 
 " The Silver Searcher
 if executable('ag')
@@ -286,7 +292,7 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-let g:airline#extensions#branch#prefix     = '➔' ", ➥ 
+let g:airline#extensions#branch#prefix     = '➔' ", ➥
 let g:airline#extensions#readonly#symbol   = '⊘'
 let g:airline#extensions#linecolumn#prefix = '¶'
 let g:airline#extensions#paste#symbol      = 'ρ'
