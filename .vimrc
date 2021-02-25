@@ -9,6 +9,7 @@ source $VIMRUNTIME/defaults.vim
 call plug#begin('~/.vim/plugged')
 " Color Schema
 Plug 'sainnhe/edge'
+Plug 'arcticicestudio/nord-vim'
 
 Plug 'bronson/vim-trailing-whitespace'
 
@@ -31,12 +32,18 @@ Plug 'junegunn/fzf.vim'
 
 " Rails
 Plug 'tpope/vim-rails'
-"" Ruby向けにendを自動挿入してくれる
-Plug 'tpope/vim-endwise'
 
 " for Golang
 "" Golangを本格的に使うようになったらいれる
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
+
+" for javascript
+Plug 'pangloss/vim-javascript'
+
+" for ruby
+Plug 'vim-ruby/vim-ruby'
+"" Ruby向けにendを自動挿入してくれる
+Plug 'tpope/vim-endwise'
 
 " for Lint
 Plug 'dense-analysis/ale'
@@ -82,7 +89,7 @@ Plug 'tyru/open-browser.vim'
 
 " A collection of language packs for Vim.
 "" 他pluginとの干渉を避けるためなるべく最後にする
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 "################################################
@@ -152,9 +159,10 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 "" for dark version
 set background=dark
 "" the configuration options should be placed before `colorscheme edge`
-let g:edge_style = 'aura'
-let g:edge_disable_italic_comment = 1
-colorscheme edge
+" let g:edge_style = 'aura'
+" let g:edge_disable_italic_comment = 1
+" colorscheme edge
+colorscheme nord
 
 "" Directories for swp files
 set nobackup
@@ -274,7 +282,8 @@ nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
 " vim-airline
-let g:airline_theme = 'night_owl'
+" let g:airline_theme = 'night_owl'
+" let g:airline_theme = 'nord_minimal'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
