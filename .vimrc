@@ -30,9 +30,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
-" Rails
-Plug 'tpope/vim-rails'
-
 " for Golang
 "" Golangを本格的に使うようになったらいれる
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
@@ -44,6 +41,16 @@ Plug 'pangloss/vim-javascript'
 Plug 'vim-ruby/vim-ruby'
 "" Ruby向けにendを自動挿入してくれる
 Plug 'tpope/vim-endwise'
+"" Rails
+Plug 'tpope/vim-rails'
+
+" for Markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'kannokanno/previm'
+Plug 'mattn/vim-maketable'
+
+" Plug 'editorconfig/editorconfig-vim'
 
 " for Lint
 Plug 'dense-analysis/ale'
@@ -61,12 +68,6 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 "" integration to lsp
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
-
-" for Markdown
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'kannokanno/previm'
-Plug 'mattn/vim-maketable'
 
 " Plug 'andrewradev/switch.vim'
 
