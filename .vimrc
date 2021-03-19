@@ -30,10 +30,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
-" for Golang
-"" Golangを本格的に使うようになったらいれる
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
-
 " for javascript
 Plug 'pangloss/vim-javascript'
 
@@ -61,6 +57,7 @@ Plug 'yggdroot/indentline'
 " LSP (Langage Server Protcol)
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
@@ -90,7 +87,7 @@ Plug 'tyru/open-browser.vim'
 
 " A collection of language packs for Vim.
 "" 他pluginとの干渉を避けるためなるべく最後にする
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 "################################################
@@ -136,7 +133,7 @@ let g:ale_lint_on_save = 1 " ファイルを保存したときにlint実行
 let g:ale_lint_on_text_changed = 'never' " 編集中のlintはしない
 
 "" LSPと合わせると突然vimが落ちたり、挙動が怪しいのでRubyのsyntaxはLSP(solargraph)に任せる
-let g:polyglot_disabled = ['ruby']
+" let g:polyglot_disabled = ['ruby']
 
 " vim-auto-save
 let g:auto_save = 1  " enable AutoSave on Vim startup
@@ -206,6 +203,9 @@ nnoremap <leader>l :bn<CR>
 nnoremap <leader>c :bd<CR>
 "" Save file
 nnoremap <leader>w :w<CR>
+"" Quite
+nnoremap <leader>q :q<CR>
+nnoremap <leader>qa :qa<CR>
 "" Clean search (highlight)
 nnoremap <leader><leader> :noh<CR>
 "" Toggle line number
@@ -256,12 +256,28 @@ if executable('ag')
 endif
 
 " LSP settings
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  nmap <buffer> <C-]> <plug>(lsp-definition)
+  nmap <buffer> <C-r> <plug>(lsp-references)
+  nmap <buffer> <C-h> <plug>(lsp-hover)
+endfunction
+
+augroup lsp_install
+  au!
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+"" debug for lsp
+command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log') | let asyncomplete_log_file = expand('~/asyncomplete.log')
+
 "" ale と競合するため off
 let g:lsp_diagnostics_enabled = 0
-"" debug for lsp
-" let g:lsp_log_verbose = 1
-" let g:lsp_log_file = expand('~/vim-lsp.log')
-" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+let g:lsp_diagnostics_echo_cursor = 1
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_auto_completeopt = 0
+let g:asyncomplete_popup_delay = 200
+" let g:lsp_text_edit_enabled = 1
 
 if executable('solargraph')
     " require solargraph gem
@@ -272,10 +288,6 @@ if executable('solargraph')
         \ 'whitelist': ['ruby'],
         \ })
 endif
-" 定義元へのジャンプ
-nnoremap <C-]> :LspDefinition<CR>
-nnoremap <C-h> :LspHover<CR>
-nnoremap <C-r> :LspReferences<CR>
 
 " open-browser
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
