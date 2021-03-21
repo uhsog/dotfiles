@@ -40,6 +40,9 @@ Plug 'tpope/vim-endwise'
 "" Rails
 Plug 'tpope/vim-rails'
 
+" for golang
+" Plug 'mattn/vim-goimports'
+
 " for Markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -111,43 +114,6 @@ augroup vimrc
   au BufNewFile,BufRead *.{md} set filetype=markdown
   au BufWritePost  ~/.vimrc  source ~/.vimrc
 augroup END
-
-" for Markdown
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_conceal_code_blocks = 0
-" preview open with FireFox (plugin previm)
-let g:previm_open_cmd = 'open -a Firefox'
-
-"" Linter
-let g:ale_fixers = {
-\  'ruby': ['rubocop'],
-\}
-let g:ale_sign_column_always = 1 " 左端にsymbol用のcolumnを表示させておく
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-set updatetime=500 " Linterのチェックの反映を 0.5秒にする
-" let g:ale_fix_on_save = 1 " 保存時にauto correctを実行
-let g:ale_lint_on_enter = 1 " ファイルを開いたときにlint実行
-let g:ale_lint_on_save = 1 " ファイルを保存したときにlint実行
-let g:ale_lint_on_text_changed = 'never' " 編集中のlintはしない
-
-"" LSPと合わせると突然vimが落ちたり、挙動が怪しいのでRubyのsyntaxはLSP(solargraph)に任せる
-" let g:polyglot_disabled = ['ruby']
-
-" vim-auto-save
-let g:auto_save = 1  " enable AutoSave on Vim startup
-let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
-let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
-"" git commitの編集ではauto_saveをoffにする
-augroup ignore_ft_gitcommit
-  au!
-  au FileType gitcommit let b:auto_save = 0
-augroup END
-
-" Snippets
-""" vim-vsnip mapping.
-imap <expr> <C-j> vsnip#available(1) ? '<Plug>(vsnip-expand)' : '<C-j>'
 
 " color scheme
 set t_Co=256
@@ -262,6 +228,8 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> <C-]> <plug>(lsp-definition)
   nmap <buffer> <C-r> <plug>(lsp-references)
   nmap <buffer> <C-h> <plug>(lsp-hover)
+  nmap <buffer> gi <plug>(lsp-implementation)
+  nmap <buffer> gt <plug>(lsp-type-definition)
 endfunction
 
 augroup lsp_install
@@ -273,9 +241,9 @@ command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
 
 "" ale と競合するため off
 let g:lsp_diagnostics_enabled = 0
-let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_diagnostics_echo_cursor = 0
 let g:asyncomplete_auto_popup = 1
-let g:asyncomplete_auto_completeopt = 0
+" let g:asyncomplete_auto_completeopt = 0
 let g:asyncomplete_popup_delay = 200
 " let g:lsp_text_edit_enabled = 1
 
@@ -293,6 +261,43 @@ endif
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
+
+" for Markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal_code_blocks = 0
+" preview open with FireFox (plugin previm)
+let g:previm_open_cmd = 'open -a Firefox'
+
+" Linter with ALE
+let g:ale_fixers = {
+\  'ruby': ['rubocop'],
+\}
+let g:ale_sign_column_always = 1 " 左端にsymbol用のcolumnを表示させておく
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+set updatetime=500 " Linterのチェックの反映を 0.5秒にする
+" let g:ale_fix_on_save = 1 " 保存時にauto correctを実行
+let g:ale_lint_on_enter = 1 " ファイルを開いたときにlint実行
+let g:ale_lint_on_save = 1 " ファイルを保存したときにlint実行
+let g:ale_lint_on_text_changed = 'never' " 編集中のlintはしない
+
+"" LSPと合わせると突然vimが落ちたり、挙動が怪しいのでRubyのsyntaxはLSP(solargraph)に任せる
+" let g:polyglot_disabled = ['ruby']
+
+" vim-auto-save
+let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+"" git commitの編集ではauto_saveをoffにする
+augroup ignore_ft_gitcommit
+  au!
+  au FileType gitcommit let b:auto_save = 0
+augroup END
+
+" Snippets
+"" vim-vsnip mapping.
+imap <expr> <C-j> vsnip#available(1) ? '<Plug>(vsnip-expand)' : '<C-j>'
 
 " vim-airline
 " let g:airline_theme = 'night_owl'
