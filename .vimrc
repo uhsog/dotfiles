@@ -126,6 +126,7 @@ set background=dark
 " let g:edge_style = 'aura'
 " let g:edge_disable_italic_comment = 1
 " colorscheme edge
+let g:nord_uniform_diff_background = 1
 colorscheme nord
 
 "" Directories for swp files
@@ -165,9 +166,13 @@ noremap PP "+p<CR>
 "" Buffer nav
 nnoremap <leader>h :bp<CR>
 nnoremap <leader>l :bn<CR>
-"" Close buffer
 nnoremap <leader>c :bd<CR>
-"" Save file
+"" Tab nav
+nnoremap tn :tabn<CR>
+nnoremap tp :tabp<CR>
+nnoremap tc :tabc<CR>
+nnoremap to :tabo<CR>
+"" Write file
 nnoremap <leader>w :w<CR>
 "" Quite
 nnoremap <leader>q :q<CR>
