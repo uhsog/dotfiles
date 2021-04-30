@@ -49,7 +49,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'kannokanno/previm'
 Plug 'mattn/vim-maketable'
 
-" Plug 'editorconfig/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " for Lint
 Plug 'dense-analysis/ale'
@@ -150,12 +150,6 @@ set ttyfast
 
 "" Fix backspace indent
 set backspace=indent,eol,start
-
-"" Tabs
-set tabstop=2
-set softtabstop=0
-set shiftwidth=2
-set expandtab
 
 "" Map leader to ,
 let mapleader = "\<Space>"
@@ -306,6 +300,13 @@ augroup END
 " Snippets
 "" vim-vsnip mapping.
 imap <expr> <C-j> vsnip#available(1) ? '<Plug>(vsnip-expand)' : '<C-j>'
+
+" EditConfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+augroup disable_ft_gicommit
+  au!
+  au FileType gitcommit let b:EditorConfig_disable = 1
+augroup END
 
 " vim-airline
 " let g:airline_theme = 'night_owl'
