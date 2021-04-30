@@ -276,7 +276,10 @@ let g:previm_open_cmd = 'open -a Firefox'
 " Linter with ALE
 let g:ale_fixers = {
 \  'ruby': ['rubocop'],
+\  'go': ['gofmt'],
 \}
+nnoremap <leader>af :ALEFix<CR>
+
 let g:ale_sign_column_always = 1 " 左端にsymbol用のcolumnを表示させておく
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
